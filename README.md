@@ -35,3 +35,11 @@ If the argument ```--path``` is given there must be the path to the pretaped vid
 ```bash
 python main.py --path path/to/video.mp4
 ```
+
+## Output samples
+
+- The following image shows the output image, of a mask applied to a yellow ball.
+![alt text](https://github.com/alonsocanov/Color_Mask/blob/main/outputs/example_img.jpeg "Mask output")
+
+- The following video shows the real time mask applied to the yellow ball.
+![alt text](https://github.com/alonsocanov/Color_Mask/blob/main/outputs/example_gif.gif "Video Mask output")
