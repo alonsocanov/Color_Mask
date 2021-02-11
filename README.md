@@ -15,7 +15,7 @@ When runing, a window will apear with thre feeds:
 - numpy
 - argparse
 
-## Files
+## Repository Files
 
 - main.py
 - utils.py
