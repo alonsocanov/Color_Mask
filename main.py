@@ -11,7 +11,8 @@ def main():
     hsv_upper = hsvToCvHsv(np.array([65, 100, 100]))
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path', type=str, default='0',  help="Write the kind of tracking 'color' or 'face' or manual")
+    parser.add_argument('--path', type=str, default='0',  help="path to file if thre is one")
+    parser.add_argument('--save_video', type=bool, default=False, help='set true to save video')
     args = parser.parse_args()
 
 
@@ -33,6 +34,10 @@ def main():
     fontColor = (255, 255, 255)
     lineType = 2
 
+    if args.save_video:
+        # Define the codec and create VideoWriter object
+        out = cv2.VideoWriter('outputs/video.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 24, (3*width, height))
+
 
     while True:
         ret, frame = video.read()
@@ -46,9 +51,16 @@ def main():
         mask_color[mask == 0] = 0
         display_img = cv2.hconcat([img_range, img, mask_color])
 
+        if args.save_video:
+            out.write(display_img)
         cv2.imshow(win_name, display_img)
 
+
         key = cv2.waitKey(1) & 0xFF
+
+        if key == ord('p'):
+            cv2.imwrite('outputs/img.jpeg', display_img)
+
         if key == ord('q'):
             break
     video.release()
